@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scam Infrastructure Analysis</title>
+<meta name="description" content="Independent scam infrastructure analysis and technical documentation for compliance teams, investigators, and legal professionals." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body class="bg-slate-950 text-slate-100">
+
+<!-- NAVBAR -->
+<nav class="bg-slate-900 border-b border-slate-800">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="text-xl font-bold text-indigo-400">SIA</a>
+
+    <div class="hidden md:flex space-x-8 text-sm font-medium">
+      <a href="index.html" class="hover:text-indigo-400">Home</a>
+      <a href="about.html" class="hover:text-indigo-400">About</a>
+      <a href="faq.html" class="hover:text-indigo-400">FAQ</a>
+      <a href="contact.html" class="hover:text-indigo-400">Contact</a>
+    </div>
+
+    <div class="md:hidden">
+      <button id="mobile-menu-button">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="section max-w-6xl mx-auto px-6 text-center">
+  <h1 class="text-5xl font-bold">Scam Infrastructure Analysis</h1>
+  <p class="mt-6 text-slate-400 max-w-3xl mx-auto">
+    Independent technical analysis of scam operations — focused on infrastructure mapping,
+    attribution signals, and defensible documentation.
+  </p>
+  <div class="mt-8">
+    <a href="#pricing" class="btn-primary">View Services</a>
+  </div>
+</header>
+
+<!-- TRUST SECTION -->
+<section class="section max-w-6xl mx-auto px-6">
+  <div class="grid md:grid-cols-3 gap-8 text-center">
+
+    <div class="card">
+      <h3 class="font-semibold text-lg">Military Intelligence Background</h3>
+      <p class="text-slate-400 mt-3">Cryptologic Technician • Signals Analysis</p>
+    </div>
+
+    <div class="card">
+      <h3 class="font-semibold text-lg">OSINT & Infrastructure Mapping</h3>
+      <p class="text-slate-400 mt-3">Domains, hosting, wallets, and campaign tracing</p>
+    </div>
+
+    <div class="card">
+      <h3 class="font-semibold text-lg">Defensible Reporting</h3>
+      <p class="text-slate-400 mt-3">Structured documentation suitable for legal review</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold text-center">Services</h2>
+<p class="text-center text-slate-400 mt-4">
+Secure payment processed via Stripe. Invoice available upon request.
+</p>
+
+<div class="grid md:grid-cols-3 gap-8 mt-12">
+
+<div class="card">
+<h3 class="text-xl font-semibold">Quick Assessment</h3>
+<p class="text-3xl font-bold mt-4">$250</p>
+<ul class="mt-4 space-y-2 text-slate-400">
+<li>• Infrastructure overview</li>
+<li>• Risk indicators</li>
+<li>• 30-min consultation</li>
+</ul>
+<button class="btn-primary mt-6 w-full payment-btn"
+data-amount="250"
+data-product="Quick Assessment">
+Pay with Stripe
+</button>
+</div>
+
+<div class="card ring-2 ring-indigo-500">
+<h3 class="text-xl font-semibold">Full Analysis</h3>
+<p class="text-3xl font-bold mt-4">$750</p>
+<ul class="mt-4 space-y-2 text-slate-400">
+<li>• Deep infrastructure mapping</li>
+<li>• Attribution signals</li>
+<li>• Written report + visuals</li>
+<li>• 60-min consultation</li>
+</ul>
+<button class="btn-primary mt-6 w-full payment-btn"
+data-amount="750"
+data-product="Full Analysis">
+Pay with Stripe
+</button>
+</div>
+
+<div class="card">
+<h3 class="text-xl font-semibold">Ongoing Advisory</h3>
+<p class="text-3xl font-bold mt-4">$1500+</p>
+<ul class="mt-4 space-y-2 text-slate-400">
+<li>• Continuous monitoring</li>
+<li>• Campaign detection</li>
+<li>• Priority response</li>
+</ul>
+<button class="btn-primary mt-6 w-full payment-btn"
+data-amount="1500"
+data-product="Ongoing Advisory">
+Pay with Stripe
+</button>
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 py-10 text-center text-sm text-slate-400">
+<p>© 2026 Scam Infrastructure Analysis</p>
+<p class="mt-2">
+<a href="privacy.html" class="hover:text-indigo-400">Privacy</a> |
+<a href="terms.html" class="hover:text-indigo-400">Terms</a> |
+<a href="disclaimer.html" class="hover:text-indigo-400">Disclaimer</a>
+</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/stripe.js"></script>
+</body>
+</html>
