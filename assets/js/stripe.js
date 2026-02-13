@@ -1,17 +1,36 @@
-const stripe = Stripe("YOUR_STRIPE_PUBLIC_KEY");
+document.addEventListener("DOMContentLoaded", function () {
 
-document.querySelectorAll(".payment-btn").forEach(btn => {
-  btn.addEventListener("click", async () => {
-    const amount = btn.dataset.amount;
-    const product = btn.dataset.product;
+  const buttons = document.querySelectorAll(".payment-btn");
 
-    const res = await fetch("/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount, product })
+  buttons.forEach(button => {
+    button.addEventListener("click", async function () {
+
+      const amount = this.getAttribute("data-amount");
+      const product = this.getAttribute("data-product");
+
+      try {
+        const response = await fetch("/create-checkout-session", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ amount, product })
+        });
+
+        const data = await response.json();
+
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          alert("Payment initialization failed.");
+        }
+
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong.");
+      }
+
     });
-
-    const session = await res.json();
-    await stripe.redirectToCheckout({ sessionId: session.id });
   });
+
 });
