@@ -37,24 +37,43 @@ For consultation requests, advisory engagements, or analysis inquiries.
 Typical response time: 24–48 business hours.
 </p>
 
-<form id="contact-form" class="mt-10 space-y-6 bg-slate-900 p-8 rounded-2xl">
+<form id="contact-form" class="space-y-6 max-w-xl mx-auto">
+  
+  <input 
+    type="text" 
+    name="name" 
+    placeholder="Your Name" 
+    required
+    class="w-full p-3 bg-slate-800 border border-slate-700 rounded"
+  >
 
-<input type="text" name="name" placeholder="Full Name" required
-class="w-full bg-slate-800 p-3 rounded-lg">
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Your Email" 
+    required
+    class="w-full p-3 bg-slate-800 border border-slate-700 rounded"
+  >
 
-<input type="email" name="email" placeholder="Email Address" required
-class="w-full bg-slate-800 p-3 rounded-lg">
+  <textarea 
+    name="message" 
+    rows="5"
+    placeholder="Your Message"
+    required
+    class="w-full p-3 bg-slate-800 border border-slate-700 rounded"
+  ></textarea>
 
-<textarea name="message" rows="5" placeholder="Describe your inquiry"
-required class="w-full bg-slate-800 p-3 rounded-lg"></textarea>
+  <button 
+    type="submit"
+    class="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded text-white"
+  >
+    Send Message
+  </button>
 
-<button type="submit" class="btn-primary w-full">
-Send Message
-</button>
-
-<p id="form-status" class="text-center text-sm mt-4 hidden"></p>
+  <p id="form-status" class="text-sm mt-4"></p>
 
 </form>
+
 
 <p class="text-xs text-slate-500 mt-6">
 Do not include passwords, private keys, or sensitive credentials. Secure evidence transmission can be arranged after engagement.

@@ -36,6 +36,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  const form = document.getElementById("contact-form");
+
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    const response = await fetch("/send-message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    const status = document.getElementById("form-status");
+
+    if (result.success) {
+      status.textContent = "Message sent successfully.";
+      status.classList.add("text-green-400");
+      form.reset();
+    } else {
+      status.textContent = "Something went wrong.";
+      status.classList.add("text-red-400");
+    }
+  });
+}
+
 
   /* ===============================
      FAQ TOGGLE (if exists)
