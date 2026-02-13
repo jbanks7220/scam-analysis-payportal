@@ -36,41 +36,60 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const form = document.getElementById("contact-form");
 
-if (form) {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  /* ===============================
+     CONTACT FORM SUBMISSION
+  =============================== */
 
-    const formData = new FormData(form);
+  const contactForm = document.getElementById("contact-form");
 
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    const response = await fetch("/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      const formData = new FormData(contactForm);
+
+      const data = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
+      };
+
+      try {
+        const response = await fetch("/send-message", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+        const status = document.getElementById("form-status");
+
+        if (result.success) {
+          status.textContent = "Message sent successfully.";
+          status.classList.remove("text-red-400");
+          status.classList.add("text-green-400");
+          contactForm.reset();
+        } else {
+          status.textContent = "Something went wrong. Please try again.";
+          status.classList.remove("text-green-400");
+          status.classList.add("text-red-400");
+        }
+
+      } catch (error) {
+        console.error("Contact form error:", error);
+
+        const status = document.getElementById("form-status");
+        if (status) {
+          status.textContent = "Server error. Please try again later.";
+          status.classList.remove("text-green-400");
+          status.classList.add("text-red-400");
+        }
+      }
     });
-
-    const result = await response.json();
-    const status = document.getElementById("form-status");
-
-    if (result.success) {
-      status.textContent = "Message sent successfully.";
-      status.classList.add("text-green-400");
-      form.reset();
-    } else {
-      status.textContent = "Something went wrong.";
-      status.classList.add("text-red-400");
-    }
-  });
-}
+  }
 
 
   /* ===============================
@@ -82,9 +101,7 @@ if (form) {
   if (faqButtons.length > 0) {
     faqButtons.forEach(button => {
       button.addEventListener("click", function () {
-
         const content = this.nextElementSibling;
-
         if (content) {
           content.classList.toggle("hidden");
         }
@@ -119,55 +136,24 @@ if (form) {
 
 
   /* ===============================
-     CONTACT FORM HANDLER (Optional)
+     HERO SLIDESHOW
   =============================== */
 
-  const contactForm = document.getElementById("contact-form");
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
 
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-      e.preventDefault();
+  if (slides.length > 0) {
+    setInterval(() => {
 
-      // Basic front-end validation example
-      const inputs = contactForm.querySelectorAll("input, textarea");
-      let valid = true;
+      slides[currentSlide].classList.remove("opacity-100");
+      slides[currentSlide].classList.add("opacity-0");
 
-      inputs.forEach(input => {
-        if (input.hasAttribute("required") && !input.value.trim()) {
-          valid = false;
-          input.classList.add("border-red-500");
-        } else {
-          input.classList.remove("border-red-500");
-        }
-      });
+      currentSlide = (currentSlide + 1) % slides.length;
 
-      if (valid) {
-        alert("Message sent successfully!");
-        contactForm.reset();
-      }
-    });
+      slides[currentSlide].classList.remove("opacity-0");
+      slides[currentSlide].classList.add("opacity-100");
+
+    }, 5000); // change slide every 5 seconds
   }
-
-  /* ===============================
-   HERO SLIDESHOW
-=============================== */
-
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-
-if (slides.length > 0) {
-  setInterval(() => {
-
-    slides[currentSlide].classList.remove("opacity-100");
-    slides[currentSlide].classList.add("opacity-0");
-
-    currentSlide = (currentSlide + 1) % slides.length;
-
-    slides[currentSlide].classList.remove("opacity-0");
-    slides[currentSlide].classList.add("opacity-100");
-
-  }, 5000); // change slide every 5 seconds
-}
-
 
 });
