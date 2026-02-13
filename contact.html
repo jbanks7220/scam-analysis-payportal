@@ -10,9 +10,21 @@
 
 <body class="bg-slate-950 text-slate-100">
 
+<!-- NAVBAR -->
 <nav class="bg-slate-900 border-b border-slate-800">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
     <a href="index.html" class="text-xl font-bold text-indigo-400">SIA</a>
+
+    <div class="hidden md:flex space-x-8 text-sm font-medium">
+      <a href="index.html" class="hover:text-indigo-400">Home</a>
+      <a href="about.html" class="hover:text-indigo-400">About</a>
+      <a href="faq.html" class="hover:text-indigo-400">FAQ</a>
+      <a href="contact.html" class="hover:text-indigo-400">Contact</a>
+    </div>
+
+    <div class="md:hidden">
+      <button id="mobile-menu-button">☰</button>
+    </div>
   </div>
 </nav>
 
