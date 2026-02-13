@@ -50,7 +50,7 @@ if (form) {
       message: formData.get("message"),
     };
 
-    const response = await fetch("/send-message", {
+    const response = await fetch("/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
